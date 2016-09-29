@@ -21,7 +21,7 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [yes] Auto-calculating the bill when adjusting the percentages on the settings page such that it calculates the tip and bill based on previous selection.
+- [yes] Auto-calculating the bill when adjusting the percentages on the settings page such that it re-calculates the tip and bill based on the new bill percentages.
 
 ## Video Walkthrough 
 
