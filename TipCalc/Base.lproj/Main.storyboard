@@ -230,10 +230,13 @@
                     <connections>
                         <outlet property="highTipLabel" destination="ZSb-IU-PKn" id="Oer-W5-of8"/>
                         <outlet property="highTipSlider" destination="ojB-wO-b7T" id="w2i-3g-3gC"/>
+                        <outlet property="highTipView" destination="p1A-VM-jQO" id="M0a-Wi-arb"/>
                         <outlet property="lowTipLabel" destination="QXJ-eO-9xK" id="qBZ-gt-bzJ"/>
                         <outlet property="lowTipSlider" destination="M25-Xp-TtT" id="woa-nZ-3Ga"/>
+                        <outlet property="lowTipView" destination="k0x-ay-G63" id="FrS-bL-2dd"/>
                         <outlet property="mediumTipLabel" destination="Zel-Xp-q38" id="m4q-FS-oUy"/>
                         <outlet property="mediumTipSlider" destination="K2f-bb-trm" id="get-j2-Q2K"/>
+                        <outlet property="mediumTipView" destination="IGq-ph-d8P" id="Ftd-mz-ofD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BMv-6Y-ZCY" userLabel="First Responder" sceneMemberID="firstResponder"/>

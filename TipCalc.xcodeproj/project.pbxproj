@@ -15,6 +15,7 @@
 		A8698BD61D985E7F0063E7A1 /* TipCalcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8698BD51D985E7F0063E7A1 /* TipCalcTests.swift */; };
 		A8698BE11D985E7F0063E7A1 /* TipCalcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8698BE01D985E7F0063E7A1 /* TipCalcUITests.swift */; };
 		A874761C1D9A2BBA00689FA1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A874761B1D9A2BBA00689FA1 /* SettingsViewController.swift */; };
+		A8EC8E6D1D9CC21100E4115D /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EC8E6C1D9CC21100E4115D /* Animations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		A8698BE01D985E7F0063E7A1 /* TipCalcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCalcUITests.swift; sourceTree = "<group>"; };
 		A8698BE21D985E7F0063E7A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A874761B1D9A2BBA00689FA1 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A8EC8E6C1D9CC21100E4115D /* Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				A874761B1D9A2BBA00689FA1 /* SettingsViewController.swift */,
 				A8698BC01D985E7F0063E7A1 /* AppDelegate.swift */,
 				A8698BC21D985E7F0063E7A1 /* ViewController.swift */,
+				A8EC8E6C1D9CC21100E4115D /* Animations.swift */,
 				A8698BC41D985E7F0063E7A1 /* Main.storyboard */,
 				A8698BC71D985E7F0063E7A1 /* Assets.xcassets */,
 				A8698BC91D985E7F0063E7A1 /* LaunchScreen.storyboard */,
@@ -267,6 +270,7 @@
 			files = (
 				A8698BC31D985E7F0063E7A1 /* ViewController.swift in Sources */,
 				A8698BC11D985E7F0063E7A1 /* AppDelegate.swift in Sources */,
+				A8EC8E6D1D9CC21100E4115D /* Animations.swift in Sources */,
 				A874761C1D9A2BBA00689FA1 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

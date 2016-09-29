@@ -11,12 +11,18 @@ import UIKit
 class ViewController: UIViewController {
     private let defaults = UserDefaults.standard
 
+    private let lowTipKey = "lowTip"
+    private let mediumTipKey = "mediumTip"
+    private let highTipKey = "highTip"
+    
     private static var isFirstLoad = true
     private var tipPercentages:[String:Double] = [
         "lowTip" : 0.1,
         "mediumTip" : 0.15,
         "highTip" : 0.2
     ]
+    
+    var animations: Animations!
     
     @IBOutlet weak var upperView: UIView!
     @IBOutlet weak var middleView: UIView!
@@ -26,13 +32,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var percentTipAmount: UISegmentedControl!
     
+    private func initDependencies(animations: Animations) {
+        self.animations = animations
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        tipPercentages["lowTip"] = getSetTipPercentageSetting("lowTip", override: true)
-        tipPercentages["mediumTip"] = getSetTipPercentageSetting("mediumTip", override: true)
-        tipPercentages["highTip"] = getSetTipPercentageSetting("highTip", override: true)
+        // need to figure out how to correctly do dependency injection
+        initDependencies(animations: Animations())
+        
+        tipPercentages[lowTipKey] = getSetTipPercentageSetting(lowTipKey, override: true)
+        tipPercentages[mediumTipKey] = getSetTipPercentageSetting(mediumTipKey, override: true)
+        tipPercentages[highTipKey] = getSetTipPercentageSetting(highTipKey, override: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,19 +63,21 @@ class ViewController: UIViewController {
             ViewController.isFirstLoad = false
         }
         
-        tipPercentages["lowTip"] = getSetTipPercentageSetting("lowTip", override: overrideUserDefaults)
-        tipPercentages["mediumTip"] = getSetTipPercentageSetting("mediumTip", override: overrideUserDefaults)
-        tipPercentages["highTip"] = getSetTipPercentageSetting("highTip", override: overrideUserDefaults)
+        tipPercentages[lowTipKey] = getSetTipPercentageSetting(lowTipKey, override: overrideUserDefaults)
+        tipPercentages[mediumTipKey] = getSetTipPercentageSetting(mediumTipKey, override: overrideUserDefaults)
+        tipPercentages[highTipKey] = getSetTipPercentageSetting(highTipKey, override: overrideUserDefaults)
         
-        setTitlePercentTipAmountSegmentControl(0, key: "lowTip")
-        setTitlePercentTipAmountSegmentControl(1, key: "mediumTip")
-        setTitlePercentTipAmountSegmentControl(2, key: "highTip")
+        setTitlePercentTipAmountSegmentControl(0, key: lowTipKey)
+        setTitlePercentTipAmountSegmentControl(1, key: mediumTipKey)
+        setTitlePercentTipAmountSegmentControl(2, key: highTipKey)
         
-        appearAnimation(self.upperView, 0.55, 89)
-        appearAnimation(self.middleView, 0.65, 225)
-        appearAnimation(self.lowerView, 0.75, 269)
+        animations.appear(self.upperView, 0.55, 89)
+        animations.appear(self.middleView, 0.65, 225)
+        animations.appear(self.lowerView, 0.75, 269)
         
         calculateTip(percentTipAmount)
+        
+        billAmount.becomeFirstResponder()
         
         print("view will appear")
     }
@@ -75,9 +90,9 @@ class ViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        disappearAnimation(self.upperView, 0.55)
-        disappearAnimation(self.middleView, 0.65)
-        disappearAnimation(self.lowerView, 0.75)
+        animations.disappear(self.upperView, 0.55)
+        animations.disappear(self.middleView, 0.65)
+        animations.disappear(self.lowerView, 0.75)
         
         print("view will disappear")
     }
@@ -89,7 +104,7 @@ class ViewController: UIViewController {
     
     @IBAction func onTap(_ sender: AnyObject) {
         print("onTap")
-        view.endEditing(true)
+        // view.endEditing(true)
     }
     
     @IBAction func calculateTip(_ sender: AnyObject) {
@@ -114,11 +129,11 @@ class ViewController: UIViewController {
         switch(index)
         {
         case 0:
-            return "lowTip"
+            return lowTipKey
         case 1:
-            return "mediumTip"
+            return mediumTipKey
         default:
-            return "highTip"
+            return highTipKey
         }
     }
     
@@ -136,27 +151,6 @@ class ViewController: UIViewController {
             value = defaults.double(forKey: key)
         }
         return value
-    }
-    
-    private func appearAnimation(_ view: UIView, _ duration: Double, _ offset: CGFloat) {
-        let screenSize: CGRect = UIScreen.main.bounds
-        view.alpha = 0
-        view.center = CGPoint(x: screenSize.width / 2, y: screenSize.height + view.frame.height)
-        UIView.animate(withDuration: duration, animations: {
-            view.alpha = 1
-            view.center = CGPoint(x: screenSize.width / 2, y: view.frame.height / 2 + offset)
-        })
-    }
-    
-    private func disappearAnimation(_ view: UIView, _ duration: Double) {
-        let screenSize: CGRect = UIScreen.main.bounds
-        view.alpha = 1
-        view.center = CGPoint(x: screenSize.width / 2, y: screenSize.height + view.frame.height)
-        UIView.animate(withDuration: duration, animations: {
-            view.alpha = 0
-            view.center = CGPoint(x: screenSize.width / 2, y: screenSize.height + view.frame.height)
-            
-        })
     }
 }
 
