@@ -38,6 +38,8 @@ syntax has been changing quite rapidly and some of the articles I have found onl
 
 Using Doubles gave me a higher precision than I anticipated initially.  I needed to round my values to the correct decimal places.
 
+I was having difficulty with figuring out how to Dependency Injection with storyboard created UIViewControllers
+
 ## License
 
     Copyright [2016] [Savio Tsui]
