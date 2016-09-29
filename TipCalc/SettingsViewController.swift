@@ -55,7 +55,7 @@ class SettingsViewController: UIViewController {
     }
     
     private func onChangedTipSlider(_ value: Double, key: String, label: UILabel) {
-        let percentage:Double = value / 100
+        let percentage:Double = round(value) / 100
         defaults.set(percentage, forKey: key)
         defaults.synchronize()
         label.text = String(format: "%.0f%%", value)

@@ -62,6 +62,8 @@ class ViewController: UIViewController {
         appearAnimation(self.middleView, 0.65, 225)
         appearAnimation(self.lowerView, 0.75, 269)
         
+        calculateTip(percentTipAmount)
+        
         print("view will appear")
     }
     
